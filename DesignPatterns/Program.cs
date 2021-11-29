@@ -3,6 +3,7 @@ using DesignPatterns.DependencyInjectionPattern;
 using DesignPatterns.FactoryPattern;
 using DesignPatterns.Models;
 using DesignPatterns.RepositoryPattern;
+using DesignPatterns.StatePattern;
 using DesignPatterns.Strategy;
 using DesignPatterns.UnitOfWorkPattern;
 using System;
@@ -21,8 +22,30 @@ namespace DesignPatterns
             //TestRepositoryPattern3();
             //TestUnitOfWorkPattern();
             //TestStrategyPattern();
+            //TestBuilderPattern();
 
-            TestBuilderPattern();
+            TestStatePattern();
+
+
+        }
+        static void TestStatePattern()
+        {
+            var customerContext = new CustomerContext();
+            Console.WriteLine(customerContext.GetState());
+            customerContext.Request(100);
+            Console.WriteLine(customerContext.GetState());
+
+            customerContext.Request(50);
+            Console.WriteLine(customerContext.GetState());
+
+            customerContext.Request(100);
+            Console.WriteLine(customerContext.GetState());
+
+            customerContext.Request(50);
+            Console.WriteLine(customerContext.GetState());
+
+            customerContext.Request(50);
+            Console.WriteLine(customerContext.GetState());
 
         }
         static void TestBuilderPattern()
